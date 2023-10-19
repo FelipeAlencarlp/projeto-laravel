@@ -5,10 +5,8 @@
 
 {{-- início conteúdo do site --}}
 @section('content')
-<header>
     <h1>Aqui tem um título</h1>
     <img src="/img/banner.jpg" alt="Banner">
-</header>
 <main>
     <section>
         {{-- {{ }} é para chamar uma variável php dentro do blade --}}

@@ -38,5 +38,14 @@ Route::get('/contact', function () { // em get() posso definir qualquer nome
 });
 
 Route::get('/produtos', function () {
-    return view('products');
+
+    // acessando querry string com 'request()' 
+    $busca = request('search');
+
+    return view('products', ['busca' => $busca]);
+});
+
+// querry parametro $id
+Route::get('/produtos_teste/{id?}', function ($id = null) { // parâmetro opcional 'null' como default
+    return view('product', ['id' => $id]);
 });
