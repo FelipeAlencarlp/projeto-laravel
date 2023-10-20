@@ -22,6 +22,3 @@ Route::get('/', [EventController::class, 'index']);
 Route::get('/events/create', [EventController::class, 'create']);
 
 Route::get('/contact', [ContactController::class, 'index']);
-
-Route::get('/produtos', [ProductController::class, 'index']);
-Route::get('/produtos_teste/{id?}', [ProductController::class, 'product']); // querry parametro $id
