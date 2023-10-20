@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProductController;
-
 // puxando o controller
 Route::get('/', [EventController::class, 'index']);
 Route::get('/events/create', [EventController::class, 'create']);
+Route::get('/events', [EventController::class, 'store']);
 
 Route::get('/contact', [ContactController::class, 'index']);

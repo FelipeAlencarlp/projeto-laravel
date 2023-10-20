@@ -22,7 +22,7 @@ header {
     padding: 0;
 }
 
-.btn-pramary {
+.btn-primary {
     background-color: #F2A340;
     border: 1px solid #C28008;
 }
@@ -35,12 +35,14 @@ header {
 /* navbar */
 #navbar img {
     width: 40px;
+    margin-left: 25px;
 }
 
 #navbar {
     justify-content: space-between;
     background-color: #FFF;
     padding: 5px 0;
+    margin-right: 20px;
 }
 
 #navbar a {
@@ -110,7 +112,7 @@ header {
     color: #ccc;
 }
 
-.card .card-tittle {
+.card .card-title {
     font-size: 20px;
     color: #212121;
     font-weight: bold;
@@ -120,6 +122,22 @@ header {
 .card-participants {
     font-size: 14px;
     color: #757575;
+}
+
+/* Event create page */
+#event-create-container {
+    padding: 30px;
+}
+
+#event-create-container label {
+    font-weight: bold;
+}
+
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea {
+    font-size: 12px;
+    margin-bottom: 10px;
 }
 
 /* footer */
