@@ -1,7 +1,7 @@
 {{-- puxa o layout --}}
 @extends('layouts.main')
 {{-- cria um título para essa página --}}
-@section('tittle', 'HDC Events')
+@section('title', 'HDC Events')
 
 {{-- início conteúdo do site --}}
 @section('content')
@@ -18,7 +18,7 @@
         <div id="cards-container" class="row">
             @foreach ($events as $event)
                 <div class="card col-md-3">
-                    <img src="/img/event_placeholder.jpg" alt="{{ $event->title }}">
+                    <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}">
                     <div class="card-body">
                         <p class="card-date">19/10/2023</p>
                         <h5 class="card-title">{{ $event->title }}</h5>

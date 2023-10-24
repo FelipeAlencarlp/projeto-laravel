@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {{-- para mudar o tittle dinâmicamente --}}
-        <title>@yield('tittle')</title>
+        <title>@yield('title')</title>
 
         {{-- Fontes do Google --}}
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
@@ -43,9 +43,18 @@
                 </div>
             </nav>
         </header>
+        
         {{-- muda o conteúdo da página dinâmicamente --}}
-
-        @yield('content')
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    @if (session('msg'))
+                        <p class="msg">{{ session('msg') }}</p>
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
+        </main>
         
         <footer>
             <p>HDC Events &copy; 2023</p>

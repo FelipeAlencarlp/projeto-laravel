@@ -1,7 +1,7 @@
 {{-- puxa o layout --}}
 @extends('layouts.main')
 {{-- cria um título para essa página --}}
-@section('tittle', 'Contato')
+@section('title', 'Contato')
 
 {{-- início conteúdo do site --}}
 @section('content')
