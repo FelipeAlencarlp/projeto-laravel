@@ -20,6 +20,15 @@ class EventController extends Controller
         return view('events.create'); // retorna para a view
     }
 
+    // na action show() posteriormente posso solicitar quantos participantes do evento, etc.
+    public function show($id)
+    {
+        // resgatando a view que o cliente solicitou
+        $event = Event::findOrFail($id);// se o cliente chutar um $id, vai retornar 404 not found
+
+        return view('events.show', ['event' => $event]);
+    }
+
     public function store(Request $request) // puxa tudo da pagina
     {
         // objeto
