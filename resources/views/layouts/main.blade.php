@@ -33,12 +33,35 @@
                         <li class="nav-item">
                             <a href="/events/create" class="nav-link">Criar Eventos</a>
                         </li>
+                        {{-- para usuarios autenticados --}}
+                        @auth
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Entrar</a>
+                            <a href="/dashboard" class="nav-link">Meus Eventos</a>
                         </li>
+                        {{-- para o logout é necessário criar um form com method="POST"
+                             dentro do <a> tem um evento JS para o logout, jogando para a
+                             página inicial do site. --}}
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Cadastrar</a>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a href="/logout"
+                                  class="nav-link"
+                                  onclick="event.preventDefault();
+                                  this.closest('form').submit();">
+                                  Sair
+                                </a>
+                            </form>
                         </li>
+                        @endauth
+                        {{-- para usuários autenticados --}}
+                        @guest
+                            <li class="nav-item">
+                                <a href="/login" class="nav-link">Entrar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/register" class="nav-link">Cadastrar</a>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </nav>
