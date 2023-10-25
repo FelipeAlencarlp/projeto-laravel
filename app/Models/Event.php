@@ -14,4 +14,7 @@ class Event extends Model
         'items' => 'array'
     ];
 
+    // informando que é uma data para o Laravel
+    protected $dates = ['date'];
+
 }
