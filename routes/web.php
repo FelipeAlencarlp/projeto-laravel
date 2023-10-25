@@ -17,7 +17,8 @@ use App\Http\Controllers\ContactController;
 
 // puxando o controller
 Route::get('/', [EventController::class, 'index']);
-Route::get('/events/create', [EventController::class, 'create']);
+Route::get('/events/create', [EventController::class, 'create'])->middleware('auth');
+// middleware('auth') concede acesso a essa página somente quem estiver logado
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']);
 

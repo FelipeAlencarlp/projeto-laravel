@@ -17,4 +17,10 @@ class Event extends Model
     // informando que é uma data para o Laravel
     protected $dates = ['date'];
 
+    // user() pois somente é um usuário
+    public function user()
+    {   // belongsTo quer dizer que pertence a alguém
+        return $this->belongsTo('App\Models\User');
+    }
+
 }

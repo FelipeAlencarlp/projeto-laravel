@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -38,7 +39,16 @@ class EventController extends Controller
         // resgatando a view que o cliente solicitou
         $event = Event::findOrFail($id);// se o cliente chutar um $id, vai retornar 404 not found
 
-        return view('events.show', ['event' => $event]);
+        // para saber qual usuário criou o evento
+        // ->first() primeiro usuário que encontrar
+        // ->toArray() transforma os objetos em array
+        $eventOwner = User::where('id', $event->user_id)->first()->toArray();
+
+        return view('events.show', 
+        [
+            'event' => $event,
+            'eventOwner' => $eventOwner
+        ]);
     }
 
     public function store(Request $request) // puxa tudo da pagina
@@ -66,6 +76,11 @@ class EventController extends Controller
             // alterar a propriedade do objeto que está sendo estanciado
             $event->image = $imageName;
         }
+
+        // para ter acesso ao usuário logado
+        $user = auth()->user();
+        $event->user_id = $user->id;
+
         // salvar os dados
         $event->save();
 
