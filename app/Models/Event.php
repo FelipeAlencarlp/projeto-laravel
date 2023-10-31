@@ -16,6 +16,7 @@ class Event extends Model
 
     // informando que é uma data para o Laravel
     protected $dates = ['date'];
+    protected $guarded = []; // tudo que vier do POST pode ser acessado sem nenhuma requisição
 
     // user() pois somente é um usuário
     public function user()

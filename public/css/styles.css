@@ -25,6 +25,7 @@ header {
 .btn-primary {
     background-color: #F2A340;
     border: 1px solid #C28008;
+    margin-top: 10px;
 }
 
 .btn-primary:hover {
@@ -208,6 +209,12 @@ header {
 
 .dashboard-events-container form {
     display: inline-block;
+}
+
+/* Edit Page */
+.img-preview {
+    width: 100px;
+    margin-top: 20px;
 }
 
 /* footer */
