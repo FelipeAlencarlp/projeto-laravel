@@ -23,5 +23,11 @@ class Event extends Model
     {   // belongsTo quer dizer que pertence a alguém
         return $this->belongsTo('App\Models\User');
     }
+    
+    // users() pois são vários usuários
+    public function users()
+    {   // belongsToMany pertence a muitos
+        return $this->belongsToMany('App\Models\User');
+    }
 
 }
