@@ -21,15 +21,8 @@ Route::get('/events/create', [EventController::class, 'create'])->middleware('au
 // middleware('auth') concede acesso a essa página somente quem estiver logado
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']);
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
+// destroy é um método do próprio Laravel para o delete
 
 Route::get('/contact', [ContactController::class, 'index']);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

@@ -88,5 +88,20 @@ class EventController extends Controller
         // ->with() exibe um modal com uma mensagem para o usuário
     }
 
+    public function dashboard()
+    {
+        $user = auth()->user();
+        $events = $user->events; // pega da Model User a função events
+
+        return view('events.dashboard', ['events' => $events]);
+    }
+
+    public function destroy($id)
+    {
+        Event::findOrFail($id)->delete(); // suficiente para deletar do banco
+
+        return redirect('/dashboard')->with('msg', 'Evento deletado com sucesso!');
+    }
+
 
 }
