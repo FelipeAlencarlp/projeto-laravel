@@ -39,6 +39,19 @@ class EventController extends Controller
         // resgatando a view que o cliente solicitou
         $event = Event::findOrFail($id);// se o cliente chutar um $id, vai retornar 404 not found
 
+        // evitando que o mesmo usuário participe do mesmo evento várias vezes
+        $user = auth()->user();
+        $hasUserJoined = false;
+
+        if ($user) {
+            $userEvents = $user->eventsAsParticipant->toArray();
+            foreach ($userEvents as $userEvent) {
+                if ($userEvent['id'] == $id) {
+                    $hasUserJoined = true;
+                }
+            }
+        }
+
         // para saber qual usuário criou o evento
         // ->first() primeiro usuário que encontrar
         // ->toArray() transforma os objetos em array
@@ -47,7 +60,8 @@ class EventController extends Controller
         return view('events.show', 
         [
             'event' => $event,
-            'eventOwner' => $eventOwner
+            'eventOwner' => $eventOwner,
+            'hasUserJoined' => $hasUserJoined
         ]);
     }
 
@@ -147,7 +161,16 @@ class EventController extends Controller
         // redirecionar o usuário para outra view e enviar mensagem pra ele
         $event = Event::findOrFail($id);
 
-        return redirect('/dashboard')->with('msg', 'Sua presença foi confirmada no evento ' . $event->title);
+        return redirect('/dashboard')->with('msg', 'Sua presença foi confirmada no evento: ' . $event->title);
+    }
+
+    public function leaveEvent($id)
+    {
+        $user = auth()->user();
+        $user->eventsAsParticipant()->detach($id); // detach faz a remoção
+        $event = Event::findOrFail($id);
+        return redirect('/dashboard')->with('msg', 'Você saiu com sucesso do evento: ' . $event->title);
+
     }
 
 
